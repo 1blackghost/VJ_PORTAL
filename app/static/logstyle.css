@@ -1,0 +1,75 @@
+
+body{
+    margin:3% 15% 3% 15%;
+    background-color: rgb(255, 255, 255)
+}
+.box1{
+    width: 100%;
+    height:100%;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px;
+
+}
+.box2{
+    height:100%;
+    width:50%;
+    background-color: none;
+    text-align: center;
+}
+h1{
+    font-size: 35px;
+    font-family: 'lato',sans-serif;
+    padding-top: 15%;
+    padding-bottom: 5%;
+    margin: 0%;
+    color: rgb(0, 0, 0);
+}
+h2{
+    font-size: 25px;
+}
+
+input{
+    height: 40px;
+    margin-top: 10%;
+    width: 80%;
+    font-size: medium;
+    font-family: 'open-sans',sans-serif;
+    border-radius: 5px;
+    border: 0px;
+    background-color: rgb(224, 224, 224);
+}
+input:focus{
+    outline-color: rgb(0, 136, 255);
+}
+button{
+    padding:15 0 15 0px;
+    width: 300px;
+    background-color: rgb(0, 0, 0);
+    border:0px;
+    font-family: 'lato',sans-serif;
+    font-size: 22px;
+    color: white;
+    margin-top: 50px;
+    border-radius: 50px;
+}
+.box3{
+    width:50%;
+    height:100%;
+    background-color: rgb(0, 74, 158);
+    z-index: 1;
+    float: right;
+    text-align: center;
+    font-family:'Montserrat';
+    font-size: 75px;
+    color: white;
+    padding-top:15%;
+}
+.right{
+    float:right;
+    padding-right: 35px;
+}
+a{
+    font-family: sans-serif;
+    color: rgb(0, 74, 158);
+}

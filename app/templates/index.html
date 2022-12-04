@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta name="viewport" content="width=device-width ,initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="stylesheet" href="/static/mobile.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    </head>
+    <script src="/static/main.js">
+        </script>
+    <body>
+      <div id="updir">
+      <div class="upload-bg">
+            
+            </div>
+            <div class="upload-file" >
+              <i class="fa fa-cloud-upload"></i>
+              
+                <form id="file_upload" action = "/success" method = "post" enctype="multipart/form-data">
+                  <label for="choose" id="label">
+                  <input type="file" name="file" />
+                  <input type = "submit" value="Upload" class="done">
+      
+            
+                <button onclick="Boxcls()" class="boxclc">CANCEL</button>
+              </form>
+             
+      </div>
+      </div>
+      <div id="updir2">
+        <div class="upload-bg2">
+        </div>
+              
+              <div class="upload-file2" >
+                <form action = "/profile_upload" method = "post" enctype="multipart/form-data">
+                  <i class="fa fa-cloud-upload"></i>
+                  <input type="file" name="file"  />
+                
+                  
+                  <input type = "submit" value="Upload" class="done">
+                    
+                  <button onclick="Boxcls2()" class="boxclc">CANCEL</button>
+                </form>
+                  
+        
+        </div>
+        </div>
+      <div id="blrdir">
+      <h3>VJSP</h3>
+            <button id="ham" onclick="ham()"><i class="fa fa-navicon"></i></button>
+            
+            <div class="header" id="header">
+              <div class="myself" id="myself">
+                <button id="close" onclick="exit2()"><i class="fa fa-close"></i></button>
+                <img src="{{profile}}" id="profile-pic" class="profile-pic">
+                <button id="/static/upload-img" onclick="Box2()" class="upload-img">Upload</button>
+            </div>
+               
+                <div id="users" class="users">
+                    <div id="update_user_here" >
+                        <button id="close" onclick="exit()"><i class="fa fa-close"></i></button>
+
+                    {%for i in users%}
+
+                    <section class="user" id="user"><img src="{{i[1]}}" id="users-profile"><b>{{i[0]}}</b></section>
+                            
+                    {%endfor%}
+                    </div>
+                </div>
+                <div id="archive" class="archive">
+                    <button id="close" onclick="exit1()"><i class="fa fa-close"></i></button>
+                    {%for i in old%}
+                        <a href="/old/getFromDB/{{i}}" class="date" id="date"><b>{{i}}</b></a>
+                    {%endfor%}
+                    
+                    
+                </div>
+
+                <section class="space"></section>
+                <button class="option" id="profile" onclick="myself()"><i class="fa fa-user-circle-o"></i><b>{{me}}</b></button>
+                <button class="option" id="people" onclick="users()"><i class="fa fa-users" ></i><b>People</b></button>
+                <button class="option" id="archive" onclick="archive()"><i class="fa fa-archive"></i><b>Previous Chats</b></button>
+                <button class="option" onclick="window.location='/donate'" id="donate"><i class="fa fa-money"></i><b>Donate</b></button>
+                <button class="option" onclick="window.location='/logout'" id="logout"><i class="fa fa-sign-out"></i><b>Logout</b></button>
+            </div>
+            
+            <div id="update">
+
+              <div id="message1">
+                  {% for message in msg %}
+                      {%if message[0]==me%}
+                      {% if message[1].startswith('detectionVideo~')%}
+                      {%set var = message[1].split("~")%}
+                        <div id="usermsg">
+                          
+                          <button id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                            <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                            <div class="message">
+                              <video width="500" height="500"  controls src={{var[1]}}>
+          
+                              </video>
+                            </div>
+                            <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                          
+                          
+                          
+                          </div>
+          
+             
+                      {% elif message[1].startswith('detectionIMage~')%}
+                      {%set var = message[1].split("~")%}
+                      <div id="usermsg">
+                          
+                          <button id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                            <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                            <div class="message">
+                              <img width="500" height="500" src={{var[1]}}>
+                            </div>
+                            <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                          
+                          
+                          
+                          </div>
+                
+                      {% elif message[1].startswith('http')%}
+                       <div id="usermsg">
+                          
+                          <button id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                            <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                            <div class="message">
+                              <a style="color:blue" href={{message[1]}}>click here to access the shared link</a>
+          
+                            </div>
+                            <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                          
+                          
+                          
+                          </div>
+                     
+          
+                        {%else%}
+                              <div id="usermsg">
+                                <button id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                                  <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                                  <div class="message">
+                                      {{message[1]}}
+                                  </div>
+                                  <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                                
+                                
+                                
+                                </div>
+                          {%endif%}
+          
+                      {%else%}
+                          {% if message[1].startswith('detectionVideo~')%}
+                          {%set var = message[1].split("~")%}
+                          <div id="pblcmsg">
+                              
+                              <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                              <div class="message">
+                                  <video width="500" height="500"  controls src={{var[1]}}>
+          
+                                  </video>
+                              </div>
+                              <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                              
+                              
+                              
+                              </div>
+          
+              
+                          {% elif message[1].startswith('detectionIMage~')%}
+                          {%set var = message[1].split("~")%}
+                          <div id="pblcmsg">
+                              
+                              <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                              <div class="message">
+                                  <img width="500" height="500" src={{var[1]}}>
+                              </div>
+                              <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                              
+                              
+                              
+                              </div>
+                  
+                          {% elif message[1].startswith('http')%}
+                          <div id="pblcmsg">
+                              
+                              <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                              <div class="message">
+                                  <a style="color:blue" href={{message[1]}}>click here to access the shared link</a>
+          
+                              </div>
+                              <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                              
+                              
+                              
+                              </div>
+                      
+          
+                          {%else%}
+                                  <div id="pblcmsg">
+                                      <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                                      <div class="message">
+                                          {{message[1]}}
+                                      </div>
+                                      <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                                  
+                                  
+                                  
+                                  </div>
+                              {%endif%}
+                         
+                      {%endif%}
+          
+              {% endfor %}
+              <button  type='button' id="scroll" class="scroll"><i class="fa fa-sort-up"></i> New Message</button>
+              </div>
+          </div>
+        
+          </form>
+          <legend class="form1">
+          
+            <button class="upload" onclick="Box()"><i class="fa fa-paperclip"></i></button>
+          <form   class="flexdir" id="searchForm" name="searchForm" method="">
+
+                        <input autofocus name="text" type="text" id="text" autocomplete="off"  required placeholder="Type Message here">
+                        <button type="submit" id="send" class="send" ><i class="fa fa-send"></i></button>
+                </form>
+                
+          </legend>
+          </div>
+        </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script>
+  $("#scroll").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#update").offset().top},
+        'slow');
+        console.log('d');
+});
+ $(window).scroll(function() {
+    var top_of_element = $("#update").offset().top;
+    var bottom_of_element = $("#update").offset().top + $("#update").outerHeight();
+    var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+    var top_of_screen = $(window).scrollTop();
+
+    if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+            jQuery("#scroll").hide();
+    } else {
+              var link = document.getElementById('scroll');
+                link.style.display = 'block'; 
+                console.log("not"); 
+
+              }
+});
+  function F(){
+    var link = document.getElementById('scroll');
+    link.style.display = 'none'; 
+
+
+  }
+  F();
+    function openBox(){
+        //show the upload window
+        document.getElementById("updir").style.display="inherit";
+
+    }
+    function hideBox(){
+        //hides the upload window
+        document.getElementById("file_upload").style.display="block";
+
+    }
+    //excutes only once an page load...
+    hideBox();
+    function colorChange(e){
+        if(document.getElementById(e).style.color==="black"){
+            document.getElementById(e).style.color="red";
+            console.log("here");        }
+        else{
+            document.getElementById(e).style.color="black";
+        }
+
+
+
+    }
+    function getL(e){
+    colorChange(e);
+      $.ajax({
+        url:'/getLike/'+e,
+        type:'POST',
+        dataType:'json',
+
+
+      });
+
+    }
+
+     function trashF(e){
+      $.ajax({
+        url:'/trash/'+e,
+        type:'POST',
+        dataType:'json',
+
+      });
+    }
+    var text="";
+    $(function(){
+      window.setInterval(function(){loadnewdata()},1000)
+    function loadnewdata(){
+      $.ajax({
+        url:'/update',
+        type:'POST',
+        dataType:'json',
+        success:function(data){
+          //$(update).replaceWith(data);
+          var checking = data;
+          //console.log(data);
+          //console.log(update)
+          var value = checking[1];
+          //console.log(value)
+          if (text!=value){
+              var pos = $('#update').scrollTop();
+                $(update).replaceWith(checking);
+                $('#update').scrollTop(pos);
+                var link = document.getElementById('scroll');
+                link.style.display = 'block'; 
+
+                var audio = new Audio("https://encryptedmasterchat.pythonanywhere.com/static/autdio.mp3");
+                audio.play();
+                text=value;      
+          }
+
+        }
+
+      });
+    }
+  });
+  $(function() {
+  $("#searchForm").submit(function(e) {
+    e.preventDefault();
+        $.ajax({
+            url: '/getM',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+                $("input[id='text']").val("");
+                var audio = new Audio("https://encryptedmasterchat.pythonanywhere.com/static/Message%20Notification%20Sound%20_%20SMS%20Tone%20_%20Message%20Ringtoneaudio-mp3.mp3");
+                audio.play();
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+    var check="";
+    $(function(){
+      window.setInterval(function(){loadnewdata()},1000)
+    function loadnewdata(){
+      $.ajax({
+        url:'/update_user_here',
+        type:'POST',
+        dataType:'json',
+        success:function(data1){
+          $(update_user_here).replaceWith(data1);
+          var value1 = document.getElementById("update_user_here").innerHTML; 
+          if (check!=value1){
+            check=value1;
+                            var audio = new Audio("https://encryptedmasterchat.pythonanywhere.com/static/mixkit-long-pop-2358.wav");
+                audio.play();
+          }
+
+        }
+
+      });
+    }
+  });
+</script>
+</html>

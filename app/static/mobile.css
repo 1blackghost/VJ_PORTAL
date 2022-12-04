@@ -1,0 +1,654 @@
+@media(max-width:768px){
+    body{
+        margin: 0%;
+        overflow: hidden;
+    
+    }
+    h3{
+        display: block;
+    }
+    #message1{
+        width:100%;
+        height:900px;
+        float: right;
+        background-color: transparent;
+        overflow-y: scroll;
+    }
+    .header{
+        width:70%;
+        height:100%;
+        position: absolute;
+        background-color: white;
+        overflow-x:hidden;
+        overflow-y: hidden;
+        border-right: 1px solid rgb(99, 99, 99);
+        z-index: 1;
+        display: none;
+    }
+    .closeh{
+        visibility: visible;
+        background-color:transparent;
+        border:0px;
+        margin-bottom: 30px;
+        float: left;
+    }
+    .message{
+        font-size: 20px;
+    }
+    .form1{
+        float: right;
+        border-radius: 50px;
+        position: fixed;
+        bottom:0px;
+        right: 0px;
+        width:90%;
+        background-color: rgb(255, 255, 255);
+        margin: 10px 5%;
+        border:1px solid rgb(114, 114, 114)
+    }
+    .send{
+        height:55px;
+        width: 85px;
+        border-radius: 70px;
+        border: 0ch;
+        background-color: rgb(54, 86, 145);
+        color: white;
+        font-size: 33px;
+    }
+    #text{
+        height:45px;
+        border-radius: 50px;
+        margin: 5px;
+        border: 0ch;
+        font-size: 20px;
+        width:85%;
+        background-color: rgb(255, 255, 255);
+        margin-left: 85px;
+    }
+    #upload{
+        height:45px;
+        width:75px;
+        border-radius: 60px;
+        margin: 5px;
+        border: 0ch;
+        background-color: rgb(255, 255, 255);
+        color:rgb(36, 105, 252) ;
+        font-size: 35px;
+        position: absolute;
+    }
+    .upload-file i{
+        font-size: 200px;
+    color: rgb(189, 189, 189);
+    margin: 2% 30%;
+    }
+    .boxclc{
+        width:100px;
+    height:33.3px;
+    background-color: white;
+    border:2px solid rgb(54, 86, 145);
+    color:rgb(54, 86, 145);
+    font-size: 20px;
+    float: right;
+    margin: 2%;
+    margin-top: 15%;
+    }
+    #label{
+        width:130px;
+        height:30px;
+        background-color: rgb(54, 86, 145);;
+        margin-left:43% ;
+        border-radius: 30px;
+        color: rgb(255, 255, 255);
+        font-size: 22px;
+        display: inline-block;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px 10px 5px 10px;
+    }
+    .done{
+        width:100px;
+    height:33.3px;
+    background-color: white;
+    background-color:  rgb(54, 86, 145);;
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+    float: right;
+    margin: 2%;
+    border: 0ch;
+    margin-top: 15%;
+    }
+
+    #ham{
+        width:60px;
+        height:60px;
+        background-color: transparent;
+        font-size:30px;
+        border:0px;
+        display: inherit;
+        position: relative;
+        border-top: 1px solid black;
+    }
+    .space{
+        width:100%;
+        height:10%;
+        background-color: rgb(255, 255, 255);
+    }
+    .scroll{
+        height:40px;
+    width: 150px;
+    position: absolute;
+    top: 75px;
+    right: 40%;
+    font-size: 13px;
+    border-radius: 100px;
+    border: 0px;
+    background-color: rgb(0, 140, 255);
+    color: white;
+    }
+    .scroll-rcv{
+        height:40px;
+        width: 40px;
+        position: absolute;
+        bottom: 100px;
+        right: 50px;
+        font-size: 30px;
+    }
+    .option{
+        width:94%;
+        text-align: left;
+        height: 45px;
+        margin: 4% 3%;
+        font-size: 25px;
+        border-radius: 35px;
+        border: none;
+        line-height: 45px;
+        background-color: white;
+    }
+    @media(max-height:1050px){
+        #message1{
+            width:100%;
+            height:875px;
+        }
+    }
+    @media(max-height:1000px){
+        #message1{
+            width:100%;
+            height:825px;
+        }
+    }
+    @media(max-height:950px){
+        #message1{
+            width:100%;
+            height:775px;
+        }
+    }
+    @media(max-height:900px){
+        #message1{
+            width:100%;
+            height:725px;
+        }
+    }
+    @media(max-height:850px){
+        #message1{
+            width:100%;
+            height:675px;
+        }
+    }
+    @media(max-height:800px){
+        #message1{
+            width:100%;
+            height:625px;
+        }
+    }
+    @media(max-height:750px){
+        #message1{
+            width:100%;
+            height:575px;
+        }
+    }
+    @media(max-height:700px){
+        #message1{
+            width:100%;
+            height:525px;
+        }
+    }
+    @media(max-height:650px){
+        #message1{
+            width:100%;
+            height:475px;
+        }
+    }
+    @media(max-height:600px){
+        #message1{
+            width:100%;
+            height:425px;
+        }
+    }
+    @media(max-height:550px){
+        #message1{
+            width:100%;
+            height:375px;
+        }
+    }
+    @media(max-height:500px){
+        #message1{
+            width:100%;
+            height:325px;
+        }
+    }
+    @media(max-height:450px){
+        #message1{
+            width:100%;
+            height:275px;
+        }
+    }
+    @media(max-height:300px){
+        #message1{
+            width:100%;
+            height:225px;
+        }
+    }
+    @media(max-height:250px){
+        #message1{
+            width:100%;
+            height:175px;
+        }
+    }
+}
+@media(max-width:425px){
+    ::-webkit-scrollbar{
+        display: none;
+        
+    }
+    #message1{
+        width:100%;
+        height:900px;
+        float: right;
+        background-color: transparent;
+        overflow-y: scroll;
+        
+    }
+    .header{
+        width:70%;
+        height:100%;
+        position: absolute;
+        background-color: white;
+        overflow-x:hidden;
+        overflow-y: hidden;
+        border-right: 1px solid rgb(99, 99, 99);
+        z-index: 1;
+        display: none;
+    }
+    .closeh{
+        visibility: visible;
+        background-color:transparent;
+        border:0px;
+        margin-bottom: 30px;
+        float: left;
+    }
+
+    .form1{
+        float: right;
+        border-radius: 50px;
+        position: fixed;
+        bottom:0px;
+        right: 0px;
+        width:90%;
+        background-color: rgb(255, 255, 255);
+        margin: 10px 5%;
+        border:1px solid rgb(114, 114, 114)
+    }
+    .send{
+        height:50px;
+        width: 85px;
+        border-radius: 70px;
+        border: 0ch;
+        background-color: rgb(54, 86, 145);
+        color: white;
+        font-size: 25px;
+    }
+    #text{
+        height:35px;
+        border-radius: 50px;
+        margin-left: 75px;
+        border: 0ch;
+        font-size: 15px;
+        width:85%;
+        background-color: rgb(255, 255, 255);
+    }
+    #upload{
+        height:35px;
+        width:50px;
+        border-radius: 60px;
+        margin: 5px;
+        border: 0ch;
+        background-color: rgb(255, 255, 255);
+        color:rgb(36, 105, 252) ;
+        font-size: 20px;
+        position: absolute;
+    }
+    .upload-file2 i{
+        font-size: 200px;
+    color: rgb(189, 189, 189);
+    margin: 2% 20%;
+    }
+    .upload-file i{
+        font-size: 200px;
+    color: rgb(189, 189, 189);
+    margin: 2% 20%;
+    }
+    .boxclc{
+        width:75px;
+    height:25px;
+    background-color: white;
+    border:2px solid rgb(54, 86, 145);
+    color:rgb(54, 86, 145);
+    font-size: 15px;
+    float: right;
+    margin: 5%;
+    margin-top: 30%;
+    }
+    #label{
+        width:100px;
+        height:30px;
+        background-color: rgb(54, 86, 145);;
+        margin-left:35% ;
+        border-radius: 30px;
+        color: rgb(255, 255, 255);
+        font-size: 18px;
+        display: inline-block;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px 10px 0px 10px;
+    }
+    .done{
+        width:75px;
+    height:25px;
+    background-color: white;
+    background-color:  rgb(54, 86, 145);;
+    color:rgb(255, 255, 255);
+    font-size: 15px;
+    float: left;
+    margin: 10%;
+    border: 0ch;
+    margin-top: 20%;
+    }
+    #ham{
+        width:60px;
+        height:60px;
+        background-color: transparent;
+        font-size:30px;
+        border:0px;
+        display: inherit;
+        position: relative;
+    }
+    .like{
+        font-size: 18px;
+
+    }
+    #delete{
+        font-size: 20px;
+        
+    }
+    .space{
+        width:100%;
+        height:10%;
+        background-color: rgb(255, 255, 255);
+        
+    }
+    .message{
+        font-size: 18px;
+        background-color: none;
+        width: 85%;
+        padding: 2.5% 0% 8% 15%;
+    }
+    #profimg{
+        width:50px;
+        height:50px;
+        padding: 10px;
+        border-radius: 65px;
+    }
+    .name-user{
+        font-size: 20px;
+        font-weight: bold;
+        padding:25px 0px;
+    }
+    .scroll{
+        height:30px;
+    width: 130px;
+    position: absolute;
+    top: 75px;
+    right: 35%;
+    font-size: 10px;
+    border-radius: 100px;
+    border: 0px;
+    background-color: rgb(0, 140, 255);
+    color: white;
+    }
+
+    .option{
+        width:94%;
+        text-align: left;
+        height: 45px;
+        margin: 4% 3%;
+        font-size: 20px;
+        border-radius: 35px;
+        border: none;
+        line-height: 45px;
+        background-color: white;
+    }
+    @media(max-height:950px){
+        #message1{
+            width:100%;
+            height:825px;
+        }
+    }
+    @media(max-height:1050px){
+        #message1{
+            width:100%;
+            height:875px;
+        }
+    }
+    @media(max-height:1000px){
+        #message1{
+            width:100%;
+            height:825px;
+        }
+    }
+    @media(max-height:950px){
+        #message1{
+            width:100%;
+            height:775px;
+        }
+    }
+    @media(max-height:900px){
+        #message1{
+            width:100%;
+            height:725px;
+        }
+    }
+    @media(max-height:850px){
+        #message1{
+            width:100%;
+            height:675px;
+        }
+    }
+    @media(max-height:800px){
+        #message1{
+            width:100%;
+            height:625px;
+        }
+    }
+    @media(max-height:750px){
+        #message1{
+            width:100%;
+            height:575px;
+        }
+    }
+    @media(max-height:700px){
+        #message1{
+            width:100%;
+            height:525px;
+        }
+    }
+    @media(max-height:650px){
+        #message1{
+            width:100%;
+            height:475px;
+        }
+    }
+    @media(max-height:600px){
+        #message1{
+            width:100%;
+            height:425px;
+        }
+    }
+    @media(max-height:550px){
+        #message1{
+            width:100%;
+            height:375px;
+        }
+    }
+    @media(max-height:500px){
+        #message1{
+            width:100%;
+            height:325px;
+        }
+    }
+    @media(max-height:450px){
+        #message1{
+            width:100%;
+            height:275px;
+        }
+    }
+    @media(max-height:300px){
+        #message1{
+            width:100%;
+            height:225px;
+        }
+    }
+    @media(max-height:250px){
+        #message1{
+            width:100%;
+            height:175px;
+        }
+    }
+}
+@media(max-width:320px){
+    .option{
+        width:94%;
+        text-align: left;
+        height: 45px;
+        margin: 4% 3%;
+        font-size: 15px;
+        border-radius: 35px;
+        border: none;
+        line-height: 45px;
+        background-color: white;
+    }
+    .scroll{
+        height:30px;
+    width: 130px;
+    position: absolute;
+    top: 75px;
+    right: 30%;
+    font-size: 10px;
+    border-radius: 100px;
+    border: 0px;
+    background-color: rgb(0, 140, 255);
+    color: white;
+    }
+    .boxclc{
+        margin-top: 20%;
+    }
+    
+      
+    @media(max-height:1050px){
+        #message1{
+            width:100%;
+            height:875px;
+        }
+    }
+    @media(max-height:1000px){
+        #message1{
+            width:100%;
+            height:825px;
+        }
+    }
+    @media(max-height:950px){
+        #message1{
+            width:100%;
+            height:775px;
+        }
+    }
+    @media(max-height:900px){
+        #message1{
+            width:100%;
+            height:725px;
+        }
+    }
+    @media(max-height:850px){
+        #message1{
+            width:100%;
+            height:675px;
+        }
+    }
+    @media(max-height:800px){
+        #message1{
+            width:100%;
+            height:625px;
+        }
+    }
+    @media(max-height:750px){
+        #message1{
+            width:100%;
+            height:575px;
+        }
+    }
+    @media(max-height:700px){
+        #message1{
+            width:100%;
+            height:525px;
+        }
+    }
+    @media(max-height:650px){
+        #message1{
+            width:100%;
+            height:475px;
+        }
+    }
+    @media(max-height:600px){
+        #message1{
+            width:100%;
+            height:425px;
+        }
+    }
+    @media(max-height:550px){
+        #message1{
+            width:100%;
+            height:375px;
+        }
+    }
+    @media(max-height:500px){
+        #message1{
+            width:100%;
+            height:325px;
+        }
+    }
+    @media(max-height:450px){
+        #message1{
+            width:100%;
+            height:275px;
+        }
+    }
+    @media(max-height:300px){
+        #message1{
+            width:100%;
+            height:225px;
+        }
+    }
+    @media(max-height:250px){
+        #message1{
+            width:100%;
+            height:175px;
+        }
+    }
+}

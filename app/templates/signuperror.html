@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/sign-up.css">
+        <link rel="stylesheet" href="/static/logmobile.css">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <style>
+
+    </style>
+    <body>
+        <div class="box1">
+            <div class="box3"><h2>VIMAL JYOTHI STUDENTS PORTAL</h2>VJSP
+            </div>
+            <div class="box2">
+                <h1>Create An Account</h1>
+                <form method="POST" class="register-form" id="register-form">
+                <p style="color:red;font-size: 12px;">{{msg}}</p>
+                <input type="email" name="email" id="email"size="40" placeholder="  Email" required class="input">
+                <input type="text" name="name" id="name" size="40" placeholder="  Username" required class="input">
+                <input type="password" name="pass" id="pass" size="40" placeholder="  Password"  required class="input">
+                <input type="password" name="re_pass" id="re_pass" size="40" placeholder="  Re-Enter Password" required class="input"><br>
+                <input type="checkbox" name="agree-term" id="agree-term" required class="check"> Agree to terms and condition
+                <button type="submit" name="signup" id="signup" class="form-submit" value="Register">Sign-Up</button><br><br>
+                Already have an account <a href="/">Log-In</a>
+                
+            </form>
+            </div>
+        
+        </div>
+        
+
+    </body>
+    </html>

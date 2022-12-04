@@ -1,0 +1,70 @@
+
+        <div id="update">
+            <script src="/static/main.js">
+            </script>
+            <button id="ham" onclick="ham()"><i class="fa fa-navicon"></i></button>
+            <div class="header" id="header">
+            <div class="myself" id="myself">
+                <button id="close" onclick="exit2()"><i class="fa fa-close"></i></button>
+                <img src="/static/prof.jpg" id="profile-pic" class="profile-pic">
+                <button id="/static/upload-img" class="upload-img">Upload</button>
+            </div>
+                <div id="users" class="users">
+                    <button id="close" onclick="exit()"><i class="fa fa-close"></i></button>
+                    <section class="user" id="user"><img src="/static/prof.jpg" id="users-profile"><b>User</b></section>
+                    <section class="user" id="user"><img src="/static/prof.jpg" id="users-profile"><b>User</b></section>
+                    <section class="user" id="user"><img src="/static/prof.jpg" id="users-profile"><b>User</b></section>
+                    <section class="user" id="user"><img src="/static/prof.jpg" id="users-profile"><b>User</b></section>
+                </div>
+                <div id="archive" class="archive">
+                    <button id="close" onclick="exit1()"><i class="fa fa-close"></i></button>
+                    <a href="" class="date" id="date"><b>20-03-2897</b></a>
+                    <a href="" class="date" id="date"><b>21-03-2897</b></a>
+                    <a href="" class="date" id="date"><b>22-03-2897</b></a>
+                    
+                </div>
+
+                <section class="space"></section>
+                <button class="option" id="profile" onclick="myself()"><i class="fa fa-user-circle-o"></i><b>{{me}}</b></button>
+                <button class="option" id="people" onclick="users()"><i class="fa fa-users" ></i><b>People</b></button>
+                <button class="option" id="archive" onclick="archive()"><i class="fa fa-archive"></i><b>Previous Chats</b></button>
+                <button class="option" id="donate"><i class="fa fa-money"></i><b>Donate</b></button>
+                <button class="option" id="logout"><i class="fa fa-sign-out"></i><b>Logout</b></button>
+            </div>
+            
+            <div id="message1">
+                {% for message in msg %}
+                    {%if message[0]==me%}
+                        <div id="usermsg">
+                            <span><img id="profimg"src="/static/prof.jpg" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                            <div class="message">
+                                {{message[1]}}
+                            </div>
+                            <button id="like"  onclick="like()"><i class="fa fa-heart"></i></button>
+                            <button id="delete"><i class="fa fa-trash"></i></button>
+                            
+                            
+                        </div>
+                    {%else%}
+                        <div id="pblcmsg">
+                            <span><img id="profimg"src="/static/prof.jpg" alt=""><c id="name-users" class="name-user">{{message[0]}}</c></span>
+                            <div class="message">
+                                {{message[1]}}
+                            </div>
+                            <button id="like" onclick="like()"><i class="fa fa-heart"></i></button>
+                            <button id="delete"><i class="fa fa-trash"></i></button>
+
+                        </div>
+                    {%endif%}
+
+            {% endfor %}
+                <button id="scroll" class="scroll"><i class="fa fa-sort-down"></i></button>
+            </div>
+             <form id="searchForm" name="searchForm">
+                    <button id="upload"><i class="fa fa-paperclip"></i></button>
+                    <input name="text" type="text" id="text" autocomplete="off" autofocus requied placeholder="Type Message here">
+                    <button type="submit" id="send"><i class="fa fa-send"></i></button>
+            </form>
+        </div>
+        
+    </body>

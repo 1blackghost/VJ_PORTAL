@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta name="viewport" content="width=device-width ,initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="stylesheet" href="/static/mobile.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    </head>
+    <script src="/static/main.js">
+        </script>
+    <body>
+      <div id="updir">
+      <div class="upload-bg">
+            
+            </div>
+            <div class="upload-file" >
+              <i class="fa fa-cloud-upload"></i>
+              
+                <form id="file_upload" action = "/success" method = "post" enctype="multipart/form-data">
+                  <label for="choose" id="label">
+                  <input type="file" name="file" />
+                  <input type = "submit" value="Upload" class="done">
+      
+            
+                <button onclick="Boxcls()" class="boxclc">CANCEL</button>
+              </form>
+             
+      </div>
+      </div>
+      <div id="updir2">
+        <div class="upload-bg2">
+        </div>
+              
+              <div class="upload-file2" >
+                <form action = "/profile_upload" method = "post" enctype="multipart/form-data">
+                  <i class="fa fa-cloud-upload"></i>
+                  <input type="file" name="file"  />
+                
+                  
+                  <input type = "submit" value="Upload" class="done">
+                    
+                  <button onclick="Boxcls2()" class="boxclc">CANCEL</button>
+                </form>
+                  
+        
+        </div>
+        </div>
+      <div id="blrdir">
+      <h3>VJSP</h3>
+            <button id="ham" onclick="ham()"><i class="fa fa-navicon"></i></button>
+            
+            <div class="header" id="header">
+              <div class="myself" id="myself">
+                <button id="close" onclick="exit2()"><i class="fa fa-close"></i></button>
+                <img src="{{profile}}" id="profile-pic" class="profile-pic">
+                <button id="/static/upload-img" onclick="Box2()" class="upload-img">Upload</button>
+            </div>
+               
+                <div id="users" class="users">
+                    <div id="update_user_here" >
+                        <button id="close" onclick="exit()"><i class="fa fa-close"></i></button>
+
+                    {%for i in users%}
+
+                    <section class="user" id="user"><img src="{{i[1]}}" id="users-profile"><b>{{i[0]}}</b></section>
+                            
+                    {%endfor%}
+                    </div>
+                </div>
+                <div id="archive" class="archive">
+                    <button id="close" onclick="exit1()"><i class="fa fa-close"></i></button>
+                    {%for i in old%}
+                        <a href="/old/getFromDB/{{i}}" class="date" id="date"><b>{{i}}</b></a>
+                    {%endfor%}
+                    
+                    
+                </div>
+
+                <section class="space"></section>
+                <button disabled class="option" id="profile" onclick="myself()"><i class="fa fa-user-circle-o"></i><b>{{me}}</b></button>
+                <button disabled class="option" id="people" onclick="users()"><i class="fa fa-users" ></i><b>People</b></button>
+                <button onclick="window.location='/user/dashboard'" class="option" id="archive" ><i class="fa fa-archive"></i><b>Newest Chats</b></button>
+                <button class="option" id="donate"><i class="fa fa-money"></i><b>Donate</b></button>
+                <button class="option" id="logout"><i class="fa fa-sign-out"></i><b>Logout</b></button>
+            </div>
+            
+            <div id="update">
+
+              <div id="message1">
+                  {% for message in msg %}
+                      {%if message[0]==me%}
+                      {% if message[1].startswith('detectionVideo~')%}
+                      {%set var = message[1].split("~")%}
+                        <div id="usermsg">
+                          
+                          <button disabled  id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                            <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                            <div class="message">
+                              <video width="500" height="500"  controls src={{var[1]}}>
+          
+                              </video>
+                            </div>
+                            <button disabled class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                          
+                          
+                          
+                          </div>
+          
+             
+                      {% elif message[1].startswith('detectionIMage~')%}
+                      {%set var = message[1].split("~")%}
+                      <div id="usermsg">
+                          
+                          <button disabled id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                            <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                            <div class="message">
+                              <img width="500" height="500" src={{var[1]}}>
+                            </div>
+                            <button disabled class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                          
+                          
+                          
+                          </div>
+                
+                      {% elif message[1].startswith('http')%}
+                       <div id="usermsg">
+                          
+                          <button disabled  id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                            <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                            <div class="message">
+                              <a style="color:blue" href={{message[1]}}>click here to access the shared link</a>
+          
+                            </div>
+                            <button disabled class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                          
+                          
+                          
+                          </div>
+                     
+          
+                        {%else%}
+                                {%if message[3]=="bluekeySecrect"%}
+                                <div id="usermsg">
+                                    <div class="message">
+                                        {{message[1]}}
+                                    </div>
+
+                                    
+                                    </div>
+                                {%else%}
+                                <div id="usermsg">
+                                    <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                                    <div class="message">
+                                        {{message[1]}}
+                                    </div>
+                                    <button disabled  class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                                    
+                                    
+                                    
+                                    </div>
+                                {%endif%}
+                          {%endif%}
+          
+                      {%else%}
+                          {% if message[1].startswith('detectionVideo~')%}
+                          {%set var = message[1].split("~")%}
+                          <div id="pblcmsg">
+                              
+                              <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                              <div class="message">
+                                  <video width="500" height="500"  controls src={{var[1]}}>
+          
+                                  </video>
+                              </div>
+                              <button disabled class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                              
+                              
+                              
+                              </div>
+          
+              
+                          {% elif message[1].startswith('detectionIMage~')%}
+                          {%set var = message[1].split("~")%}
+                          <div id="pblcmsg">
+                              
+                              <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                              <div class="message">
+                                  <img width="500" height="500" src={{var[1]}}>
+                              </div>
+                              <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                              
+                              
+                              
+                              </div>
+                  
+                          {% elif message[1].startswith('http')%}
+                          <div id="pblcmsg">
+                              
+                              <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                              <div class="message">
+                                  <a style="color:blue" href={{message[1]}}>click here to access the shared link</a>
+          
+                              </div>
+                              <button disabled  class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                              
+                              
+                              
+                              </div>
+                      
+          
+                          {%else%}
+                          {%if message[3]=="bluekeySecrect"%}
+                          <div id="usermsg">
+                              <div style="background-color: paleturquoise;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="message">
+                            {{message[0]}}/{{message[1]}}/{{message[2]}} 
+                              </div>
+
+                              
+                              </div>
+                          {%else%}
+                          <div id="usermsg">
+                              <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                              <div class="message">
+                                  {{message[1]}}
+                              </div>
+                              <button disabled  class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                              
+                              
+                              
+                              </div>
+                          {%endif%}
+                              {%endif%}
+                         
+                      {%endif%}
+          
+              {% endfor %}
+              <button  type='button' id="scroll" class="scroll"><i class="fa fa-sort-up"></i> New Message</button>
+              </div>
+          </div>
+        
+      
+         
+          </div>
+        </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
+</script>
+</html>

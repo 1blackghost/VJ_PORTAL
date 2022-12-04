@@ -1,0 +1,134 @@
+<div id="update">
+
+    <div id="message1">
+        {% for message in msg %}
+            {%if message[0]==me%}
+            {% if message[1].startswith('detectionVideo~')%}
+            {%set var = message[1].split("~")%}
+              <div id="usermsg">
+                
+                <button id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                  <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                  <div class="message">
+                    <video width="500" height="500"  controls src={{var[1]}}>
+
+                    </video>
+                  </div>
+                  <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                
+                
+                
+                </div>
+
+   
+            {% elif message[1].startswith('detectionIMage~')%}
+            {%set var = message[1].split("~")%}
+            <div id="usermsg">
+                
+                <button id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                  <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                  <div class="message">
+                    <img width="500" height="500" src={{var[1]}}>
+                  </div>
+                  <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                
+                
+                
+                </div>
+      
+            {% elif message[1].startswith('http')%}
+             <div id="usermsg">
+                
+                <button id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                  <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                  <div class="message">
+                    <a style="color:blue" href={{message[1]}}>click here to access the shared link</a>
+
+                  </div>
+                  <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                
+                
+                
+                </div>
+           
+
+              {%else%}
+                    <div id="usermsg">
+                      <button id="delete" onclick="trashF({{message[2]}})"> <i class="fa fa-trash"></i> </button>
+                        <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                        <div class="message">
+                            {{message[1]}}
+                        </div>
+                        <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                      
+                      
+                      
+                      </div>
+                {%endif%}
+
+            {%else%}
+                {% if message[1].startswith('detectionVideo~')%}
+                {%set var = message[1].split("~")%}
+                <div id="pblcmsg">
+                    
+                    <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                    <div class="message">
+                        <video width="500" height="500"  controls src={{var[1]}}>
+
+                        </video>
+                    </div>
+                    <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                    
+                    
+                    
+                    </div>
+
+    
+                {% elif message[1].startswith('detectionIMage~')%}
+                {%set var = message[1].split("~")%}
+                <div id="pblcmsg">
+                    
+                    <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                    <div class="message">
+                        <img width="500" height="500" src={{var[1]}}>
+                    </div>
+                    <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                    
+                    
+                    
+                    </div>
+        
+                {% elif message[1].startswith('http')%}
+                <div id="pblcmsg">
+                    
+                    <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                    <div class="message">
+                        <a style="color:blue" href={{message[1]}}>click here to access the shared link</a>
+
+                    </div>
+                    <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                    
+                    
+                    
+                    </div>
+            
+
+                {%else%}
+                        <div id="pblcmsg">
+                            <span><img id="profimg"src="{{message[5]}}" alt=""><c id="name-user" class="name-user">{{message[0]}}</c></span>
+                            <div class="message">
+                                {{message[1]}}
+                            </div>
+                            <button class="like" id="{{message[2]}}" onclick="getL({{message[2]}})"><i class="fa fa-thumbs-o-up"></i> Like {{message[3]}}</button>
+                        
+                        
+                        
+                        </div>
+                    {%endif%}
+               
+            {%endif%}
+
+    {% endfor %}
+    <button  type='button' id="scroll" class="scroll"><i class="fa fa-sort-up"></i> New Message</button>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+            <div id="update_user_here" >
+                <button id="close" onclick="exit()"><i class="fa fa-close"></i></button>
+
+                {%for i in users%}
+                        
+                <section class="user" id="user"><img src="{{i[1]}}" id="users-profile"><b>{{i[0]}}</b></section>
+                        
+                {%endfor%}
+            </div>

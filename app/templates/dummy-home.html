@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+<style type="text/css">
+    .container {
+              border: 2px solid #dedede;
+              background-color: #f1f1f1;
+              border-radius: 5px;
+              padding: 10px;
+              margin: 10px 0;
+            }
+
+            /* Darker chat container */
+            .darker {
+              border-color: #ccc;
+              background-color: #ddd;
+            }
+
+            /* Clear floats */
+            .container::after {
+              content: "";
+              clear: both;
+              display: table;
+            }
+
+            /* Style images */
+            .container b {
+              float: left;
+              max-width: 60px;
+              width: 100%;
+              margin-right: 20px;
+              border-radius: 50%;
+            }
+
+            /* Style the right image */
+            .container b.right {
+              float: right;
+              margin-left: 20px;
+              margin-right:0;
+            }
+
+            /* Style time text */
+            .time-right {
+              float: right;
+              color: #aaa;
+            }
+
+            /* Style time text */
+            .time-left {
+              float: left;
+              color: #999;
+            }
+
+</style>
+
+
+
+<div class="alert alert-dark" role="alert">
+                    {% for message in msg %}
+                    <pre>
+                      {{ message }}
+                    {% endfor %}
+                  </pre>
+                </div>
+</div>
+</div>
+</div>
+
+
+<form method="post">
+  <div class="box">
+    <input  autocomplete="off" id="message" name="message" required>
+    </input>
+    <input type="submit" value="send">
+  </div>
+</form>
+</body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+  <script>
+    $(function(){
+      window.setInterval(function(){loadnewdata()},1000)
+    function loadnewdata(){
+      $.ajax({
+        url:'/update',
+        type:'POST',
+        dataType:'json',
+        success:function(data){
+          $(update).replaceWith(data)
+
+        }
+      });
+    }
+  });
+</script>
+
+</html>
